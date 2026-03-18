@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_tienda
+    environment:
+      POSTGRES_DB: tienda
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: usuario123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tienda-network
+
+volumes:
+  postgres_data:
+
+networks:
+  tienda-network:
+    name: tienda-network

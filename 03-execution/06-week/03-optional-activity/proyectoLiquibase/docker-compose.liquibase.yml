@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  liquibase:
+    build:
+      context: .
+      dockerfile: Dockerfile.liquibase
+    container_name: liquibase_tienda
+    volumes:
+      - ./changelog:/liquibase/changelog
+    command: >
+      --url=jdbc:postgresql://host.docker.internal:5432/tienda
+      --username=user1
+      --password=usuario123
+      --changeLogFile=db.changelog-master.xml
+      update
+    networks:
+      - tienda-network
+
+networks:
+  tienda-network:
+    external: true

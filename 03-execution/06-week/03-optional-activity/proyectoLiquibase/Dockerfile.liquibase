@@ -1,0 +1,4 @@
+FROM liquibase/liquibase:latest
+
+# Instalar el driver de PostgreSQL
+RUN lpm add postgresql --global
